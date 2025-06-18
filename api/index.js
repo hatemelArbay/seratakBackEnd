@@ -32,12 +32,12 @@ app.use(cors({
 //   origin:"http://localhost:8080"
 // }));
   
-const initDbConnection = require('./config/dbConnection');
-const serviceRouter = require('./Routers/service');
-const bundleRouter = require("./Routers/bundle");
-const authRouter = require("./Routers/auth");
-const clientServiceRouter = require('./Routers/clientService');
-const clientBundleRouter= require("./Routers/clientBundle");
+const initDbConnection = require('../config/dbConnection');
+const serviceRouter = require('../Routers/service');
+const bundleRouter = require("../Routers/bundle");
+const authRouter = require("../Routers/auth");
+const clientServiceRouter = require('../Routers/clientService');
+const clientBundleRouter= require("../Routers/clientBundle");
     app.use('/service',serviceRouter);
     app.use("/bundle",bundleRouter);
     app.use("/auth",authRouter);
