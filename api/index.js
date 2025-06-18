@@ -56,5 +56,5 @@ app.listen(port,async () => {
      await initDbConnection();
 });
 module.exports = app;
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
 // module.exports=app;
