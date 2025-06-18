@@ -88,7 +88,10 @@ app.post("/service/updateService",middleware.verifyToken,serviceController.updat
 app.post("/auth/login",authController.login);
 app.get("/auth/getUser/:id",middleware.verifyToken,authController.getUserData);
 app.post("/auth/changePass",middleware.verifyToken,authController.changePass);
-
+// validate token
+app.get('/auth/validateToken', middleware.verifyToken, (req, res) => {
+  res.json({ valid: true, user: req.user });
+});
 // app.listen(port,async () => {
 
 //   console.log(`Server is running on http://localhost:${port}`);
