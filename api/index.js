@@ -38,18 +38,22 @@ const bundleRouter = require("../Routers/bundle");
 const authRouter = require("../Routers/auth");
 const clientServiceRouter = require('../Routers/clientService');
 const clientBundleRouter= require("../Routers/clientBundle");
+const bundleController= require("../Controllers/bundle");
+
     app.use('/service',serviceRouter);
     app.use("/bundle",bundleRouter);
     app.use("/auth",authRouter);
 
     app.use("/clientBundle",clientBundleRouter);
     app.use('/clientService',clientServiceRouter);
-
-
-const port =process.env.PORT;
+    
+    
+    const port =process.env.PORT;
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Test route working!" });
 });
+
+app.get("/clientBundle/getBundles",bundleController.getBundles);
 app.listen(port,async () => {
 
   console.log(`Server is running on http://localhost:${port}`);
