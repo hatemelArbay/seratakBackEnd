@@ -39,8 +39,11 @@ const authRouter = require("../Routers/auth");
 const clientServiceRouter = require('../Routers/clientService');
 const clientBundleRouter= require("../Routers/clientBundle");
 const bundleController= require("../Controllers/bundle");
+(async () => {
+  await initDbConnection();
+})();   
 
-    app.use('/service',serviceRouter);
+app.use('/service',serviceRouter);
     app.use("/bundle",bundleRouter);
     app.use("/auth",authRouter);
 
@@ -54,11 +57,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/clientBundle/getBundles",bundleController.getBundles);
-app.listen(port,async () => {
+// app.listen(port,async () => {
 
-  console.log(`Server is running on http://localhost:${port}`);
-     await initDbConnection();
-});
+//   console.log(`Server is running on http://localhost:${port}`);
+//      await initDbConnection();
+// });
 module.exports = app;
 // module.exports.handler = serverless(app);
 // module.exports=app;
