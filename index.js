@@ -47,7 +47,9 @@ const clientBundleRouter= require("./Routers/clientBundle");
 
 
 const port =process.env.PORT;
-
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Test route working!" });
+});
 app.listen(port,async () => {
 
   console.log(`Server is running on http://localhost:${port}`);
