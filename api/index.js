@@ -46,12 +46,12 @@ const middleware= require("../middleware/authMiddleware");
   await initDbConnection();
 })();   
 
-app.use('/service',serviceRouter);
-    app.use("/bundle",bundleRouter);
-    app.use("/auth",authRouter);
+// app.use('/service',serviceRouter);
+//     app.use("/bundle",bundleRouter);
+//     app.use("/auth",authRouter);
 
-    app.use("/clientBundle",clientBundleRouter);
-    app.use('/clientService',clientServiceRouter);
+//     app.use("/clientBundle",clientBundleRouter);
+//     app.use('/clientService',clientServiceRouter);
     
     
     const port =process.env.PORT;
