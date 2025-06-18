@@ -66,10 +66,10 @@ app.delete("/clientBundle/deleteBundle/:id",bundleController.deleteBundle);
 app.post("/clientBundle/updateBundle",bundleController.updateBundle);
 
 // bundle 
-app.post("/bundle/addBundle",bundleController.postBundle);
-app.get("/bundle/getBundles",bundleController.getBundles);
-app.delete("/bundle/deleteBundle/:id",bundleController.deleteBundle);
-app.post("/bundle/updateBundle",bundleController.updateBundle);
+app.post("/bundle/addBundle",middleware.verifyToken,bundleController.postBundle);
+app.get("/bundle/getBundles",middleware.verifyToken,bundleController.getBundles);
+app.delete("/bundle/deleteBundle/:id",middleware.verifyToken,bundleController.deleteBundle);
+app.post("/bundle/updateBundle",middleware.verifyToken,bundleController.updateBundle);
 // client service 
 app.post('/clientService/postService',serviceController.postService);
 app.get("/clientService/getServices",serviceController.getServices);
@@ -77,10 +77,10 @@ app.delete("/clientService/deleteService/:id",serviceController.deleteService);
 app.post("/clientService/updateService",serviceController.updateService);
 
 // service 
-app.post('/service/postService',serviceController.postService);
-app.get("/service/getServices",serviceController.getServices);
-app.delete("/service/deleteService/:id",serviceController.deleteService);
-app.post("/service/updateService",serviceController.updateService);
+app.post('/service/postService',middleware.verifyToken,serviceController.postService);
+app.get("/service/getServices",middleware.verifyToken,serviceController.getServices);
+app.delete("/service/deleteService/:id",middleware.verifyToken,serviceController.deleteService);
+app.post("/service/updateService",middleware.verifyToken,serviceController.updateService);
 
 // auth 
 app.post("/auth/login",authController.login);
