@@ -33,12 +33,15 @@ app.use(cors({
 // }));
   
 const initDbConnection = require('../config/dbConnection');
-const serviceRouter = require('../Routers/service');
-const bundleRouter = require("../Routers/bundle");
-const authRouter = require("../Routers/auth");
-const clientServiceRouter = require('../Routers/clientService');
-const clientBundleRouter= require("../Routers/clientBundle");
+// const serviceRouter = require('../Routers/service');
+// const bundleRouter = require("../Routers/bundle");
+// const authRouter = require("../Routers/auth");
+// const clientServiceRouter = require('../Routers/clientService');
+// const clientBundleRouter= require("../Routers/clientBundle");
 const bundleController= require("../Controllers/bundle");
+const serviceController = require('../Controllers/service');
+const authController = require("../Controllers/auth");
+const middleware= require("../middleware/authMiddleware");
 (async () => {
   await initDbConnection();
 })();   
@@ -56,7 +59,34 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Test route working!" });
 });
 
+// client bundle 
 app.get("/clientBundle/getBundles",bundleController.getBundles);
+app.get("/clientBundle/getBundles",bundleController.getBundles);
+app.delete("/clientBundle/deleteBundle/:id",bundleController.deleteBundle);
+app.post("/clientBundle/updateBundle",bundleController.updateBundle);
+
+// bundle 
+app.get("/bundle/getBundles",bundleController.getBundles);
+app.get("/bundle/getBundles",bundleController.getBundles);
+app.delete("/bundle/deleteBundle/:id",bundleController.deleteBundle);
+app.post("/bundle/updateBundle",bundleController.updateBundle);
+// client service 
+app.post('/clientService/postService',serviceController.postService);
+app.get("/clientService/getServices",serviceController.getServices);
+app.delete("/clientService/deleteService/:id",serviceController.deleteService);
+app.post("/clientService/updateService",serviceController.updateService);
+
+// service 
+app.post('/service/postService',serviceController.postService);
+app.get("/service/getServices",serviceController.getServices);
+app.delete("/service/deleteService/:id",serviceController.deleteService);
+app.post("/service/updateService",serviceController.updateService);
+
+// auth 
+app.post("/auth/login",authController.login);
+app.get("/auth/getUser/:id",middleware.verifyToken,authController.getUserData);
+app.post("/auth/changePass",middleware.verifyToken,authController.changePass);
+
 // app.listen(port,async () => {
 
 //   console.log(`Server is running on http://localhost:${port}`);
