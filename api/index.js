@@ -60,13 +60,13 @@ app.get("/", (req, res) => {
 });
 
 // client bundle 
-app.get("/clientBundle/getBundles",bundleController.getBundles);
+app.post("/clientBundle/addBundle",bundleController.postBundle);
 app.get("/clientBundle/getBundles",bundleController.getBundles);
 app.delete("/clientBundle/deleteBundle/:id",bundleController.deleteBundle);
 app.post("/clientBundle/updateBundle",bundleController.updateBundle);
 
 // bundle 
-app.get("/bundle/getBundles",bundleController.getBundles);
+app.post("/bundle/addBundle",bundleController.postBundle);
 app.get("/bundle/getBundles",bundleController.getBundles);
 app.delete("/bundle/deleteBundle/:id",bundleController.deleteBundle);
 app.post("/bundle/updateBundle",bundleController.updateBundle);
