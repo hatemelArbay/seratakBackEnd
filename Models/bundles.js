@@ -16,6 +16,10 @@ color : {
 features : {
     type : [String],
     required: true
+},
+price : {
+    type : Number,
+    required : true
 }
 
 })

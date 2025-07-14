@@ -2,12 +2,15 @@ const bundleService = require("../Services/bundle");
 const {ObjectId} = require("mongodb");
 module.exports.postBundle = async(req,res)=>{
     try {
+        console.log("triggered");
         const bundleData = {
             title : req.body.title, 
             icon : req.body.icon, 
             color :req.body.color,
-            features:req.body.features
+            features:req.body.features,
+            price : req.body.price
         }
+        console.log(bundleData);
         const response = await bundleService.postBundle(bundleData);
         if (response){
             res.send({success:true})
@@ -50,7 +53,8 @@ module.exports.updateBundle = async(req,res)=>{
             title: req.body.title,
             icon :req.body.icon,
             color:req.body.color,
-            features:req.body.features 
+            features:req.body.features,
+            price : req.body.price
         }
         const response = await bundleService.updateBundle(bundle);
         if (response)

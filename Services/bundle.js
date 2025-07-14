@@ -2,11 +2,14 @@ const bundleModle = require("../Models/bundles");
 
 module.exports.postBundle= async(bundleData)=>{
     try {
+        console.log("reacieved bundle");
+        console.log(bundleData);
         const bundle = new bundleModle({
             title:bundleData.title, 
             icon : bundleData.icon,
             color:bundleData.color,
-            features:bundleData.features
+            features:bundleData.features,
+            price:bundleData.price,
         })
        const newBundle = await bundle.save();
        return newBundle;

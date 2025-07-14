@@ -1,6 +1,4 @@
 const servicesModel = require('../Models/services');
-const ServicesModel = require('../Models/services');
-
 module.exports.postService= async(serviceData)=>{
     try{
         const service = new ServicesModel({
