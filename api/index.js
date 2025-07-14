@@ -105,5 +105,5 @@ app.get('/auth/validateToken', middleware.verifyToken, (req, res) => {
 //      await initDbConnection();
 // });
 // module.exports = app;
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
 module.exports=app;
