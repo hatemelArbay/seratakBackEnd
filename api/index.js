@@ -6,16 +6,14 @@ const serverless = require("serverless-http");
 app.use(express.json()); 
 
 dotenv.config({
-    // path:'../.env'
-      path:'./.env'
+    path:'./.env'
 });
 
 const allowedOrigins = [
-  // 'http://localhost:3000',
+  'http://localhost:3000',
   // 'http://localhost:8080',
   'https://seratak.com',
   'https://admin.seratak.com'
-  
  
 ];
 
@@ -46,8 +44,6 @@ const bundleController= require("../Controllers/bundle");
 const serviceController = require('../Controllers/service');
 const authController = require("../Controllers/auth");
 const middleware= require("../middleware/authMiddleware");
-const paymentRouter = require("../Routers/payments");
-// to be uncommented
 (async () => {
   await initDbConnection();
 })();   
@@ -92,19 +88,15 @@ app.post("/service/updateService",middleware.verifyToken,serviceController.updat
 app.post("/auth/login",authController.login);
 app.get("/auth/getUser/:id",middleware.verifyToken,authController.getUserData);
 app.post("/auth/changePass",middleware.verifyToken,authController.changePass);
-
-app.use("/payment", paymentRouter);
-
 // validate token
 app.get('/auth/validateToken', middleware.verifyToken, (req, res) => {
   res.json({ valid: true, user: req.user });
 });
-
 // app.listen(port,async () => {
 
 //   console.log(`Server is running on http://localhost:${port}`);
 //      await initDbConnection();
 // });
-// module.exports = app;
+module.exports = app;
 // module.exports.handler = serverless(app);
-module.exports=app;
+// module.exports=app;
