@@ -6,7 +6,8 @@ const serverless = require("serverless-http");
 app.use(express.json()); 
 
 dotenv.config({
-    path:'../.env'
+    // path:'../.env'
+      path:'./.env'
 });
 
 const allowedOrigins = [
