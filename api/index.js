@@ -43,6 +43,7 @@ const initDbConnection = require('../config/dbConnection');
 const bundleController= require("../Controllers/bundle");
 const serviceController = require('../Controllers/service');
 const authController = require("../Controllers/auth");
+const paymentController = require("../Controllers/payments");
 const middleware= require("../middleware/authMiddleware");
 (async () => {
   await initDbConnection();
@@ -92,11 +93,14 @@ app.post("/auth/changePass",middleware.verifyToken,authController.changePass);
 app.get('/auth/validateToken', middleware.verifyToken, (req, res) => {
   res.json({ valid: true, user: req.user });
 });
-// app.listen(port,async () => {
+// payment 
+app.post('/payment/create-payment-page',paymentController.initiatePayment);
 
-//   console.log(`Server is running on http://localhost:${port}`);
-//      await initDbConnection();
-// });
+app.listen(port,async () => {
+
+  console.log(`Server is running on http://localhost:${port}`);
+     await initDbConnection();
+});
 module.exports = app;
 // module.exports.handler = serverless(app);
 // module.exports=app;
