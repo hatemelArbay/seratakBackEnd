@@ -14,7 +14,9 @@ module.exports.initiatePayment= async(req , res )=>{
       cart_amount: service.price,
       cart_description: service.serviceTitle,
       customer_details: customer,
-      return: `${process.env.BASE_URL}/payment-result`,
+      // return: `${process.env.BASE_URL}/paymentSuccess`,
+      return: `https://seratak.netlify.app/paymentSuccess`,
+      
     };
     const data = await paymentService.createPaymentPage(orderData);
         if (data.redirect_url) {

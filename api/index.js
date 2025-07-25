@@ -13,7 +13,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:8080',
   'https://seratak.com',
-  'https://admin.seratak.com'
+  'https://admin.seratak.com',
+  'https://seratak.netlify.app'
  
 ];
 

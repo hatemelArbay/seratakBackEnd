@@ -1,4 +1,5 @@
-const servicesModel = require('../Models/services');
+// const servicesModel = require('../Models/services');
+const ServicesModel = require('../Models/services');
 module.exports.postService= async(serviceData)=>{
     try{
         const service = new ServicesModel({
@@ -28,7 +29,7 @@ module.exports.getServices = async()=>{
 }
 module.exports.deleteService= async(id)=>{
     try {
-        const response =servicesModel.deleteOne({_id:id});
+        const response =ServicesModel.deleteOne({_id:id});
         
         return response;  
 
@@ -38,7 +39,7 @@ module.exports.deleteService= async(id)=>{
 }
 module.exports.updateService= async(serviceData)=>{
     try {
-        const response = await servicesModel.findOneAndUpdate(serviceData.id,serviceData);
+        const response = await ServicesModel.findOneAndUpdate(serviceData.id,serviceData);
         return response; 
         
 
