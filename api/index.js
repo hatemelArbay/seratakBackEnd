@@ -10,11 +10,12 @@ dotenv.config({
 });
 
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:8080',
+  // 'http://localhost:3000',
+  // 'http://localhost:8080',
   'https://seratak.com',
   'https://admin.seratak.com',
-  'https://seratak.netlify.app'
+  'https://seratak.netlify.app',
+  'https://seratakadmin.netlify.app'
  
 ];
 
