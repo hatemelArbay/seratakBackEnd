@@ -15,7 +15,8 @@ const allowedOrigins = [
   'https://seratak.com',
   'https://admin.seratak.com',
   'https://seratak.netlify.app',
-  'https://seratakadmin.netlify.app'
+  'https://seratakadmin.netlify.app',
+  'https://lawngreen-stork-810699.hostingersite.com'
  
 ];
 
