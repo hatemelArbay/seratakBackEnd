@@ -11,9 +11,9 @@ dotenv.config({
 
 const allowedOrigins = [
   // 'http://localhost:3000',
-  // 'http://localhost:8080',
-  'https://seretak.com/',
-  'https://admin.seratak.com',
+  // 'http://localhost:8080',https://seretak.com/
+  'https://seretak.com',
+  'https://admin.seretak.com',
   'https://seratak.netlify.app',
   'https://seratakadmin.netlify.app',
   'https://lawngreen-stork-810699.hostingersite.com'
