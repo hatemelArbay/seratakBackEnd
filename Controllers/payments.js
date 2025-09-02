@@ -15,7 +15,7 @@ module.exports.initiatePayment= async(req , res )=>{
       cart_description: service.serviceTitle,
       customer_details: customer,
       // return: `${process.env.BASE_URL}/paymentSuccess`,
-      return: `https://lawngreen-stork-810699.hostingersite.com/paymentSuccess.html`,
+      return: `https://seretak.com/paymentSuccess`,
       
     };
     const data = await paymentService.createPaymentPage(orderData);
