@@ -18,7 +18,7 @@ module.exports.initiatePayment= async(req , res )=>{
       cart_amount: priceInEGP.toFixed(2),
       cart_description: service.serviceTitle,
       customer_details: customer,
-      is_shipping_required: false,
+      hide_shipping: true,
       // return: `${process.env.BASE_URL}/paymentSuccess`,
       return: `https://seretak.com/paymentSuccess`,
       
