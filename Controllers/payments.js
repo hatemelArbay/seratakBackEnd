@@ -1,17 +1,21 @@
 const paymentService = require("../Services/payment");
-
+const axios=require("axios");
 module.exports.initiatePayment= async(req , res )=>{
     try
     {
     const customer =req.body.customer;
     const service= req.body.service;
+    
+    const riyalRate= await getExchangeRate();
+    console.log(riyalRate);
+    const priceInEGP = parseFloat(service.price) * riyalRate;
     const orderData = {
       profile_id: process.env.PAYTABS_PROFILE_ID,
       tran_type: "sale",
       tran_class: "ecom",
       cart_id: `ORDER-${Date.now()}`,
       cart_currency: "EGP",
-      cart_amount: service.price,
+      cart_amount: priceInEGP.toFixed(2),
       cart_description: service.serviceTitle,
       customer_details: customer,
       // return: `${process.env.BASE_URL}/paymentSuccess`,
@@ -29,6 +33,13 @@ module.exports.initiatePayment= async(req , res )=>{
     return res.status(500).json({ error: "Server error while creating payment page" });
   }
 };
+
+const getExchangeRate= async( )=>{
+  const rates = await axios.get (`https://v6.exchangerate-api.com/v6/${process.env.EXCHANGE_RATE_API_KEY}/latest/SAR`);
+  const riyalRate= rates.data.conversion_rates['EGP'];
+  return riyalRate;
+
+}
 
 module.exports.confirmPayment=async (req, res)=> {
   try {

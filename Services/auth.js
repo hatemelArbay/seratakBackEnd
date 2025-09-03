@@ -4,12 +4,9 @@ const jwt = require('jsonwebtoken');
 
 module.exports.login=async(userData)=>{
     try {
-        console.log("user data in service : ");
-        console.log(userData);
+     
       
         const user = await userModel.findOne({email:userData.email});
-        console.log("found user :");
-        console.log(user);
         if(!user|| !await bcrypt.compare(userData.password,user.password)){
             return {success:false,token:null}
         }else {
