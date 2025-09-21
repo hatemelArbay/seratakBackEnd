@@ -8,8 +8,7 @@ module.exports.login=async(req,res)=>{
             password:req.body.password
         }
         const response = await authService.login(userData);
-        console.log("repsonse");
-        console.log(response);
+    
         if (response.success==false){
          res.send({ success:false,message: "Invalid credentials" });
         }else {

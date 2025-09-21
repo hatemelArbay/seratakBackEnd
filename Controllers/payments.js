@@ -7,7 +7,7 @@ module.exports.initiatePayment= async(req , res )=>{
     const service= req.body.service;
     
     const riyalRate= await getExchangeRate();
-    console.log(riyalRate);
+
     const priceInEGP = parseFloat(service.price) * riyalRate;
     const orderData = {
       profile_id: process.env.PAYTABS_PROFILE_ID,

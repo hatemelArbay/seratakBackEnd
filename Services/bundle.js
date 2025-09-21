@@ -2,8 +2,7 @@ const bundleModle = require("../Models/bundles");
 
 module.exports.postBundle= async(bundleData)=>{
     try {
-        console.log("reacieved bundle");
-        console.log(bundleData);
+    
         const bundle = new bundleModle({
             title:bundleData.title, 
             icon : bundleData.icon,

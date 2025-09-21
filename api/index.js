@@ -16,8 +16,8 @@ const allowedOrigins = [
   'https://admin.seretak.com',
   'https://seratak.netlify.app',
   'https://seratakadmin.netlify.app',
-  'https://lawngreen-stork-810699.hostingersite.com',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  "http://localhost:8080"
  
 ];
 
@@ -49,6 +49,8 @@ const serviceController = require('../Controllers/service');
 const authController = require("../Controllers/auth");
 const paymentController = require("../Controllers/payments");
 const middleware= require("../middleware/authMiddleware");
+const blogController = require('../Controllers/blog');
+
 (async () => {
   await initDbConnection();
 })();   
@@ -99,6 +101,16 @@ app.get('/auth/validateToken', middleware.verifyToken, (req, res) => {
 });
 // payment 
 app.post('/payment/create-payment-page',paymentController.initiatePayment);
+
+
+// blog , middleware.verifyToken, 
+app.post('/blog/postBlog',blogController.postBlog);
+app.get('/blog/getBlogs',middleware.verifyToken, blogController.getBlogs);
+app.delete('/blog/deleteBlog/:id',middleware.verifyToken, blogController.deleteBlog);
+app.post('/blog/updateBlog',middleware.verifyToken, blogController.updateBlog);
+// client blogs 
+app.get('/clientBlog/getBlogs', blogController.getBlogs);
+app.get('/clientBlog/getBlogById/:id', blogController.getBlogById);
 
 app.listen(port,async () => {
 

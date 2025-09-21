@@ -2,7 +2,7 @@ const bundleService = require("../Services/bundle");
 const {ObjectId} = require("mongodb");
 module.exports.postBundle = async(req,res)=>{
     try {
-        console.log("triggered");
+   
         const bundleData = {
             title : req.body.title, 
             icon : req.body.icon, 
@@ -10,7 +10,7 @@ module.exports.postBundle = async(req,res)=>{
             features:req.body.features,
             price : req.body.price
         }
-        console.log(bundleData);
+     
         const response = await bundleService.postBundle(bundleData);
         if (response){
             res.send({success:true})

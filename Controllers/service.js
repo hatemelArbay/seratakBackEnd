@@ -1,8 +1,7 @@
 const serviceServiceLayer = require('../Services/service');
 const {ObjectId} = require("mongodb");
 module.exports.postService = async(req,res)=>{
-    console.log("triggered");
-    console.log(req.body);
+  
     try{
         const serviceData ={
             title : req.body.title,
@@ -34,8 +33,7 @@ module.exports.getServices = async(req,res)=>{
 module.exports.deleteService = async(req,res)=>{
     try {
         const id =new ObjectId (req.params.id);
-        console.log("OBject id : ");
-        console.log(id);
+  
         const response = await serviceServiceLayer.deleteService(id);
         if (response){
             res.send({success:true})
@@ -55,7 +53,7 @@ module.exports.updateService = async(req,res)=>{
             body:req.body.body
 
         }
-        console.log(serviceData);
+        
         const response= await serviceServiceLayer.updateService(serviceData);
         if (response){
             res.send({success: true})
