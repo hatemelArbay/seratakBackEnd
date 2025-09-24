@@ -50,6 +50,7 @@ const authController = require("../Controllers/auth");
 const paymentController = require("../Controllers/payments");
 const middleware= require("../middleware/authMiddleware");
 const blogController = require('../Controllers/blog');
+const contactRequestController = require('../Controllers/contactRequest');
 
 (async () => {
   await initDbConnection();
@@ -111,6 +112,9 @@ app.post('/blog/updateBlog',middleware.verifyToken, blogController.updateBlog);
 // client blogs 
 app.get('/clientBlog/getBlogs', blogController.getBlogs);
 app.get('/clientBlog/getBlogById/:id', blogController.getBlogById);
+
+// client contact request 
+app.post('/contactRequest/postContactRequest',contactRequestController.postContactRequest);
 
 app.listen(port,async () => {
 

@@ -20,6 +20,7 @@ module.exports.initiatePayment= async(req , res )=>{
       customer_details: customer,
       hide_shipping: true,
       // return: `${process.env.BASE_URL}/paymentSuccess`,
+      alt_currency:"SAR",
       return: `https://seretak.com/paymentSuccess`,
       
     };
