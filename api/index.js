@@ -16,8 +16,7 @@ const allowedOrigins = [
   'https://admin.seretak.com',
   'https://seratak.netlify.app',
   'https://seratakadmin.netlify.app',
-  'http://localhost:3000',
-  "http://localhost:8080"
+  'https://www.seretak.com'
  
 ];
 
